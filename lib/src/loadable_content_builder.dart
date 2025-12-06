@@ -59,14 +59,12 @@ class LoadableContentBuilder<T extends LoadableContentViewModel>
                   return builder(context, viewModel, child);
                 }
               } else {
-                return Expanded(
-                  child: Column(
-                    children: [
-                      if (errorTitle != null)
-                        LoadedContentErrorView(viewModel: viewModel),
-                      builder(context, viewModel, child),
-                    ],
-                  ),
+                return Column(
+                  children: [
+                    if (errorTitle != null)
+                      LoadedContentErrorView(viewModel: viewModel),
+                    Expanded(child: builder(context, viewModel, child)),
+                  ],
                 );
               }
             },
